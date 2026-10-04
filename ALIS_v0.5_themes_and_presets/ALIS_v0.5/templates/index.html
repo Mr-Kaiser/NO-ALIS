@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="alis-token" content="{{ token }}">
+  <title>ALIS · Loadout integration</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='extras.js') }}" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="ALIS home"><span class="brand-mark">A<span></span></span><span class="brand-name">ALIS<span>AUTONOMIC LOADOUT INTEGRATION SYSTEM</span></span></a>
+  <div class="top-actions"><span class="session"><i></i> LOCAL SESSION <small>v0.5</small></span><button id="theme-open" class="quiet" disabled>Themes</button><button id="presets-open" class="quiet" disabled>Loadout presets</button><button id="reload-all" class="quiet" title="Reload the dictionaries and station data">↻ Reload data</button></div>
+</header>
+<div class="overview"><div class="overview-title"><span class="eyebrow">NUCLEAR OPTION / CONFIGURATION CONTROL</span><h1>Loadout integration</h1></div><div class="metrics"><div><strong id="platform-total">—</strong><span>PLATFORMS</span></div><div><strong id="station-total">—</strong><span>STATIONS</span></div><div><strong id="mount-total">—</strong><span>MOUNTS</span></div><div><strong id="preset-total">—</strong><span>PRESETS</span></div></div></div>
+<div id="message" class="message hidden" role="status" aria-live="polite"></div>
+<main class="console">
+  <aside class="platform-panel">
+    <div class="panel-heading"><span class="eyebrow">01 / PLATFORM</span><span id="platform-match" class="tiny-count">—</span></div>
+    <label class="search compact"><span aria-hidden="true">⌕</span><input id="platform-search" type="search" placeholder="Find a platform…" aria-label="Search platforms"></label>
+    <nav id="platform-list" class="platform-list" aria-label="Platforms"><p class="empty">Connecting to ALIS…</p></nav>
+    <div class="source-info"><span class="eyebrow">DATA SOURCE</span><span id="schema">—</span><button id="source-path" class="text-button">Show folder path</button></div>
+  </aside>
+  <aside class="station-panel">
+    <div class="panel-heading"><span class="eyebrow">02 / STATION</span><span id="station-count" class="tiny-count">—</span></div>
+    <div class="platform-title"><h2 id="platform-name">Select platform</h2><span id="platform-id" class="internal-id"></span><span id="platform-owner" class="subtle"></span></div>
+    <div class="layout-heading"><span id="layout-status" class="layout-badge">SCHEMATIC</span><button id="edit-layout" class="text-button" disabled>Edit layout ↗</button></div>
+    <div class="map-wrap"><svg id="platform-map" viewBox="0 0 1000 1000" aria-label="Platform station map"></svg><span class="map-north">NOSE / FRONT ↑</span></div>
+    <p id="layout-note" class="layout-note">Choose a platform to view its stations.</p>
+    <div class="map-legend"><span class="selected">Selected</span><span class="grouped">Symmetry</span><span class="precluded">Precludes</span></div>
+    <nav id="station-list" class="station-list" aria-label="Weapon stations"></nav>
+    <div class="station-details"><span class="eyebrow">STATION RELATIONSHIPS</span><div id="relationships"><p class="subtle">Choose a station to inspect its metadata.</p></div><p class="schematic-note">Markers open station whitelists. Relationships describe the catalog; mount fit is checked in-game.</p></div>
+  </aside>
+  <section class="mount-panel" aria-label="Allowed weapon mounts">
+    <div class="mount-header"><div><span id="station-kicker" class="eyebrow">03 / MOUNT WHITELIST</span><h2 id="station-name">Choose a station</h2><p id="station-subtitle" class="subtle">Edit which weapon mounts are available.</p></div><span id="draft-status" class="state-pill">LOADING</span></div>
+    <div class="tools"><label class="search"><span aria-hidden="true">⌕</span><input id="weapon-search" type="search" placeholder="Search mount name, key or owner…" aria-label="Search weapon mounts"></label><label class="owner-label"><span class="sr-only">Filter by owner</span><select id="owner-filter"><option value="">All owners</option></select></label></div>
+    <div class="filter-row"><div class="tabs" aria-label="Mount view"><button data-filter="all" class="active" aria-pressed="true">All mounts</button><button data-filter="enabled" aria-pressed="false">Enabled <span id="enabled-tab-count">0</span></button><button data-filter="pending" aria-pressed="false">Pending <span id="pending-tab-count">0</span></button></div><span id="result-count" class="subtle">—</span></div>
+    <div class="table-labels"><span>ALLOWED / MOUNT</span><span>OWNER · AMMO</span></div>
+    <div id="weapon-list" class="weapon-list"><p class="empty">Your station whitelist will appear here.</p></div>
+    <div class="save-bar"><div><span id="change-count" class="save-title">No pending changes</span><span id="change-detail" class="subtle">Changes are saved only after review.</span></div><div class="save-actions"><button id="discard" class="quiet" disabled>Discard</button><button id="review" class="primary" disabled>Review changes <span aria-hidden="true">↗</span></button></div></div>
+  </section>
+</main>
+<footer class="footer"><span><i></i> <span id="footer-status">Connecting</span></span><span>LOCAL FILES <b>/</b> AUTOMATIC BACKUPS <b>/</b> VERIFIED SAVES</span><button id="backups" class="text-button" disabled>Station backups</button></footer>
+<dialog id="review-dialog"><div class="dialog-heading"><span class="eyebrow">CONFIGURATION REVIEW</span><button id="close-review" class="icon-button" aria-label="Close review">×</button></div><h2 id="review-title">Review station changes</h2><p id="review-summary" class="subtle"></p><div id="review-changes" class="review-changes"></div><label id="empty-consent" class="empty-consent hidden"><input id="allow-empty" type="checkbox"> I intend to disable every mount on this station.</label><p class="save-explanation">ALIS backs up the current file and verifies the saved result. Mount fit must still be checked in-game.</p><p id="review-error" class="dialog-error hidden" role="alert"></p><div class="dialog-actions"><button id="cancel-review" class="quiet">Keep editing</button><button id="confirm-save" class="primary">Save station</button></div></dialog>
+<dialog id="backup-dialog"><div class="dialog-heading"><span class="eyebrow">STATION HISTORY</span><button id="close-backups" class="icon-button" aria-label="Close backups">×</button></div><h2>Station backups</h2><p class="subtle">Restoring also backs up the current configuration.</p><div id="backup-list" class="backup-list"></div><div class="dialog-actions"><button id="done-backups" class="quiet">Done</button></div></dialog>
+<dialog id="layout-dialog" class="layout-dialog">
+  <div class="dialog-heading"><span class="eyebrow">PLATFORM LAYOUT</span><button id="close-layout" class="icon-button" aria-label="Close layout editor">×</button></div>
+  <h2>Map your platform</h2><p class="subtle">Move markers to match your reference. Layout settings do not change weapon whitelists.</p>
+  <div class="layout-editor">
+    <div class="layout-controls">
+      <label>Display name<input id="layout-name" type="text" maxlength="120" required></label>
+      <label>Silhouette<select id="layout-shape"><option value="brawler">Brawler schematic</option><option value="jet">Jet schematic</option><option value="canard">Canard schematic</option><option value="delta">Delta schematic</option><option value="bomber">Bomber schematic</option><option value="swingwing">Swing-wing schematic</option><option value="twinboom">Twin-boom schematic</option><option value="helicopter">Helicopter schematic</option><option value="quadvtol">Quad VTOL schematic</option><option value="transport">Transport schematic</option><option value="ground">Ground vehicle schematic</option><option value="ship">Ship schematic</option><option value="blank">Blank canvas</option></select></label>
+      <label>Reference image<input id="layout-image" type="file" accept="image/png,image/jpeg,image/webp"></label>
+      <div class="image-status"><span id="layout-image-status" class="subtle">Built-in silhouette</span><button id="remove-image" class="text-button" disabled>Remove image</button></div>
+      <p class="subtle">PNG, JPEG or WebP · up to 2 MiB. Images fit inside the square canvas.</p>
+      <label>Station<select id="layout-station"></select></label>
+      <label>Marker<select id="layout-point"></select></label>
+      <div class="coordinate-fields"><label>X %<input id="layout-x" type="number" min="0" max="100" step="0.1"></label><label>Y %<input id="layout-y" type="number" min="0" max="100" step="0.1"></label></div>
+      <div class="marker-actions"><button id="add-marker" class="quiet">Add marker</button><button id="remove-marker" class="quiet">Remove marker</button></div>
+      <label class="verify-layout"><input id="layout-verified" type="checkbox"> I checked this layout against my reference.</label>
+    </div>
+    <div><svg id="layout-canvas" viewBox="0 0 1000 1000" aria-label="Editable station layout"></svg><p class="subtle canvas-help">Drag a marker, click the canvas to place the selected marker, or edit X/Y. Multiple markers for one station share its whitelist.</p><p id="layout-coverage" class="subtle"></p></div>
+  </div>
+  <p id="layout-error" class="dialog-error hidden" role="alert"></p>
+  <div class="dialog-actions"><button id="cancel-layout" class="quiet">Cancel</button><button id="save-layout" class="primary">Save layout</button></div>
+</dialog>
+<dialog id="theme-dialog" class="theme-dialog">
+  <div class="dialog-heading"><span class="eyebrow">APPEARANCE</span><button id="theme-close" class="icon-button" aria-label="Close theme editor">×</button></div>
+  <h2>Make ALIS yours</h2><p class="subtle">Preview a palette, edit its colors, and save named theme presets.</p>
+  <div class="theme-controls"><label>Theme preset<select id="theme-select"></select></label><div class="theme-actions"><button id="theme-copy" class="quiet">Copy as custom</button><button id="theme-remove" class="quiet" disabled>Remove custom</button></div><label>Custom theme name<input id="theme-name" maxlength="60" disabled></label></div>
+  <div id="theme-colors" class="theme-colors"></div><p id="theme-contrast" class="subtle"></p>
+  <p id="theme-error" class="dialog-error hidden" role="alert"></p><div class="dialog-actions"><button id="theme-cancel" class="quiet">Cancel</button><button id="theme-save" class="primary">Save theme</button></div>
+</dialog>
+<dialog id="preset-dialog" class="preset-dialog">
+  <div class="dialog-heading"><span class="eyebrow">LOADOUT PRESETS</span><button id="preset-close" class="icon-button" aria-label="Close preset editor">×</button></div>
+  <h2 id="preset-platform">Loadout presets</h2><p class="subtle">Choose one mount per station group. This saves a native .preset file without changing station whitelists.</p>
+  <div id="preset-editor">
+    <div class="preset-toolbar"><select id="preset-source" aria-label="Existing loadout presets"></select><button id="preset-load" class="quiet">Load selected</button><button id="preset-new" class="quiet">New blank</button><button id="preset-copy" class="quiet">Save as copy</button></div>
+    <div class="preset-fields"><label>Preset name<input id="preset-name" maxlength="100" required></label><label>Fuel %<input id="preset-fuel" type="number" min="0" max="100" step="0.0001" required></label></div>
+    <details class="livery-details"><summary>Livery reference (advanced)</summary><label>Keep this value to retain the source livery.<input id="preset-livery" type="text" maxlength="2048" placeholder="Empty for an unspecified livery"></label></details>
+    <div id="preset-stations" class="preset-stations"></div>
+  </div>
+  <div id="preset-review" class="hidden"><p id="preset-review-summary" class="save-explanation"></p><div id="preset-review-changes" class="review-changes"></div></div>
+  <p id="preset-error" class="dialog-error hidden" role="alert"></p>
+  <div class="dialog-actions"><button id="preset-cancel" class="quiet">Close</button><button id="preset-back" class="quiet hidden">Keep editing</button><button id="preset-review-button" class="primary">Review preset</button><button id="preset-save" class="primary hidden">Save preset</button></div>
+</dialog>
+</body>
+</html>
