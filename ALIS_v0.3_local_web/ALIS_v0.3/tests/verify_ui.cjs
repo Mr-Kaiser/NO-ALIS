@@ -1,0 +1,88 @@
+const fs=require('node:fs');
+const assert=require('node:assert/strict');
+const {JSDOM}=require('jsdom');
+const path=require('node:path');
+const os=require('node:os');
+const {spawn}=require('node:child_process');
+const source=process.argv[2];
+if(!source){console.error('Usage: node tests/verify_ui.cjs PATH_TO_PRESET_LOADOUT');process.exit(2);}
+const codeRoot=path.resolve(__dirname,'..');
+const temporary=fs.mkdtempSync(path.join(os.tmpdir(),'alis-ui-'));
+const testRoot=path.join(temporary,'preset-loadout');
+fs.cpSync(path.resolve(source),testRoot,{recursive:true});
+const server=spawn(process.env.ALIS_TEST_PYTHON||'python',[path.join(codeRoot,'app.py'),testRoot,'--port','5053','--no-browser'],{stdio:['ignore','pipe','pipe']});
+let serverOutput='';server.stdout.on('data',d=>serverOutput+=d);server.stderr.on('data',d=>serverOutput+=d);
+server.on('error',e=>serverOutput+=String(e));
+const base='http://127.0.0.1:5053';
+const target=path.join(testRoot,'CAS1','weaponstation1','Center Pylon.json');
+const pause=ms=>new Promise(r=>setTimeout(r,ms));
+async function until(pred){for(let i=0;i<150;i++){if(pred())return;await pause(20);}throw new Error('Timed out waiting for UI state');}
+(async()=>{
+let ready=false;for(let i=0;i<100;i++){try{if((await fetch(base)).ok){ready=true;break;}}catch{}await pause(50);}
+if(!ready)throw new Error('Test server not reachable: '+serverOutput);
+const html=await(await fetch(base)).text();
+const dom=new JSDOM(html,{url:base,runScripts:'outside-only',pretendToBeVisual:true});
+const w=dom.window,d=w.document;
+let promptCount=0;w.confirm=()=>{promptCount++;return false;};
+w.fetch=(path,options={})=>fetch(new URL(path,base),options);
+w.HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','');};
+w.HTMLDialogElement.prototype.close=function(){this.removeAttribute('open');};
+const js=fs.readFileSync(path.join(codeRoot,'static','app.js'),'utf8');
+w.eval(js);
+const $=id=>d.getElementById(id);
+const click=node=>{assert(node,'Missing control');node.click();};
+const type=(node,text)=>{node.value=text;node.dispatchEvent(new w.Event('input',{bubbles:true}));};
+const check=(node,on)=>{assert(node,'Missing checkbox');node.checked=on;node.dispatchEvent(new w.Event('change',{bubbles:true}));};
+await until(()=>$('draft-status').textContent==='SYNCED'&&$('station-name').textContent==='Internal 35mm Autocannons');
+assert.equal($('platform-total').textContent,'32');assert.equal($('mount-total').textContent,'986');
+assert.equal(d.querySelectorAll('.platform-item').length,32);
+assert.equal(d.querySelectorAll('.weapon-row').length,986);
+click([...d.querySelectorAll('.station-item')].find(n=>n.querySelector('.station-index').textContent==='01'));
+await until(()=>$('station-name').textContent==='Center Pylon'&&$('draft-status').textContent==='SYNCED');
+const original=fs.readFileSync(target);
+type($('weapon-search'),'AAM1_single');
+assert(d.querySelectorAll('.weapon-row').length<986);
+const input=()=>[...d.querySelectorAll('.weapon-row input')].find(n=>n.getAttribute('aria-label').endsWith('(AAM1_single)'));
+assert.equal(input().checked,false);check(input(),true);
+assert.equal($('change-count').textContent,'1 pending change');assert.equal($('review').disabled,false);
+assert(fs.readFileSync(target).equals(original));
+click([...d.querySelectorAll('.station-item')].find(n=>n.querySelector('.station-index').textContent==='02'));
+assert.equal(promptCount,1);assert.equal($('station-name').textContent,'Center Pylon');
+click($('review'));await until(()=>!$('confirm-save').disabled);
+assert($('review-dialog').hasAttribute('open'));assert($('review-changes').textContent.includes('AAM1_single'));
+assert(fs.readFileSync(target).equals(original));
+click($('confirm-save'));await until(()=>$('message').textContent.startsWith('Saved and verified.')&&$('draft-status').textContent==='SYNCED');
+assert(JSON.parse(fs.readFileSync(target,'utf8')).allowedWeapons.includes('AAM1_single'));
+assert.equal($('change-count').textContent,'No pending changes');
+click($('backups'));await until(()=>$('backup-dialog').hasAttribute('open'));
+assert.equal(d.querySelectorAll('.backup-row').length,1);
+click(d.querySelector('.backup-row button'));await until(()=>!$('confirm-save').disabled);
+assert.equal($('confirm-save').textContent,'Restore station');
+click($('confirm-save'));await until(()=>!$('review-dialog').hasAttribute('open')&&$('draft-status').textContent==='SYNCED');
+assert(fs.readFileSync(target).equals(original));
+// Owner and enabled views do not alter the underlying whitelist.
+type($('weapon-search'),'');$('owner-filter').value='vanilla';$('owner-filter').dispatchEvent(new w.Event('change'));
+assert([...d.querySelectorAll('.weapon-owner')].every(n=>n.textContent==='vanilla'));
+$('owner-filter').value='';$('owner-filter').dispatchEvent(new w.Event('change'));
+click(d.querySelector('[data-filter="enabled"]'));
+assert.equal(d.querySelectorAll('.weapon-row').length,2);
+click(d.querySelector('[data-filter="all"]'));type($('weapon-search'),'AAM1_single');check(input(),true);
+// A stale station revision is rejected while the draft remains in the DOM.
+const external=JSON.stringify({allowedWeapons:['AAM2_single'],externalField:true});fs.writeFileSync(target,external);
+click($('review'));await until(()=>!$('review-error').classList.contains('hidden'));
+assert($('review-error').textContent.includes('changed on disk'));
+assert.equal(fs.readFileSync(target,'utf8'),external);
+click($('cancel-review'));click($('discard'));fs.writeFileSync(target,original);
+click($('reload-all'));await until(()=>$('station-name').textContent==='Internal 35mm Autocannons'&&$('draft-status').textContent==='SYNCED');
+// Emptying a whitelist requires a separate checkbox in the review.
+click(d.querySelector('[data-filter="enabled"]'));type($('weapon-search'),'');
+for(const node of [...d.querySelectorAll('.weapon-row input')])check(node,false);
+click($('review'));assert(!$('empty-consent').classList.contains('hidden'));assert.equal($('confirm-save').disabled,true);
+check($('allow-empty'),true);await until(()=>!$('confirm-save').disabled);
+check($('allow-empty'),false);assert.equal($('confirm-save').disabled,true);
+click($('cancel-review'));click($('discard'));
+assert(fs.readFileSync(target).equals(original));
+console.log('PASS: UI state/events with real Flask HTTP requests: initial inventory, platform/station selection, search, owner filter, enabled view, draft protection, preview, verified save, exact restore, external conflict, empty-whitelist consent.');
+console.log('Rendered layout was not tested; dialog rendering was stubbed for DOM tests.');
+dom.window.close();
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>{server.kill('SIGINT');server.once('exit',()=>fs.rmSync(temporary,{recursive:true,force:true}));});

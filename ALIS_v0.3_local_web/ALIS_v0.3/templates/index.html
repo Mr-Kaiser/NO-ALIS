@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="alis-token" content="{{ token }}">
+  <title>ALIS · Loadout integration</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="ALIS home"><span class="brand-mark">A<span></span></span><span class="brand-name">ALIS<span>AUTONOMIC LOADOUT INTEGRATION SYSTEM</span></span></a>
+  <div class="top-actions"><span class="session"><i></i> LOCAL SESSION <small>v0.3</small></span><button id="reload-all" class="quiet" title="Reload the dictionaries and station data">↻ Reload data</button></div>
+</header>
+<div class="overview"><div class="overview-title"><span class="eyebrow">NUCLEAR OPTION / CONFIGURATION CONTROL</span><h1>Loadout integration</h1></div><div class="metrics"><div><strong id="platform-total">—</strong><span>PLATFORMS</span></div><div><strong id="station-total">—</strong><span>STATIONS</span></div><div><strong id="mount-total">—</strong><span>MOUNTS</span></div><div><strong id="preset-total">—</strong><span>PRESETS</span></div></div></div>
+<div id="message" class="message hidden" role="status" aria-live="polite"></div>
+<main class="console">
+  <aside class="platform-panel">
+    <div class="panel-heading"><span class="eyebrow">01 / PLATFORM</span><span id="platform-match" class="tiny-count">—</span></div>
+    <label class="search compact"><span aria-hidden="true">⌕</span><input id="platform-search" type="search" placeholder="Find a platform…" aria-label="Search platforms"></label>
+    <nav id="platform-list" class="platform-list" aria-label="Platforms"><p class="empty">Connecting to ALIS…</p></nav>
+    <div class="source-info"><span class="eyebrow">DATA SOURCE</span><span id="schema">—</span><button id="source-path" class="text-button">Show folder path</button></div>
+  </aside>
+  <aside class="station-panel">
+    <div class="panel-heading"><span class="eyebrow">02 / STATION</span><span id="station-count" class="tiny-count">—</span></div>
+    <div class="platform-title"><h2 id="platform-name">Select platform</h2><span id="platform-owner" class="subtle"></span></div>
+    <nav id="station-list" class="station-list" aria-label="Weapon stations"></nav>
+    <div class="station-details"><span class="eyebrow">STATION RELATIONSHIPS</span><div id="relationships"><p class="subtle">Choose a station to inspect its metadata.</p></div><p class="schematic-note">Physical AV layouts arrive in the next milestone.</p></div>
+  </aside>
+  <section class="mount-panel" aria-label="Allowed weapon mounts">
+    <div class="mount-header"><div><span id="station-kicker" class="eyebrow">03 / MOUNT WHITELIST</span><h2 id="station-name">Choose a station</h2><p id="station-subtitle" class="subtle">Edit which weapon mounts are available.</p></div><span id="draft-status" class="state-pill">LOADING</span></div>
+    <div class="tools"><label class="search"><span aria-hidden="true">⌕</span><input id="weapon-search" type="search" placeholder="Search mount name, key or owner…" aria-label="Search weapon mounts"></label><label class="owner-label"><span class="sr-only">Filter by owner</span><select id="owner-filter"><option value="">All owners</option></select></label></div>
+    <div class="filter-row"><div class="tabs" aria-label="Mount view"><button data-filter="all" class="active" aria-pressed="true">All mounts</button><button data-filter="enabled" aria-pressed="false">Enabled <span id="enabled-tab-count">0</span></button><button data-filter="pending" aria-pressed="false">Pending <span id="pending-tab-count">0</span></button></div><span id="result-count" class="subtle">—</span></div>
+    <div class="table-labels"><span>ALLOWED / MOUNT</span><span>OWNER · AMMO</span></div>
+    <div id="weapon-list" class="weapon-list"><p class="empty">Your station whitelist will appear here.</p></div>
+    <div class="save-bar"><div><span id="change-count" class="save-title">No pending changes</span><span id="change-detail" class="subtle">Changes are saved only after review.</span></div><div class="save-actions"><button id="discard" class="quiet" disabled>Discard</button><button id="review" class="primary" disabled>Review changes <span aria-hidden="true">↗</span></button></div></div>
+  </section>
+</main>
+<footer class="footer"><span><i></i> <span id="footer-status">Connecting</span></span><span>LOCAL FILES <b>/</b> AUTOMATIC BACKUPS <b>/</b> VERIFIED SAVES</span><button id="backups" class="text-button" disabled>Station backups</button></footer>
+<dialog id="review-dialog"><div class="dialog-heading"><span class="eyebrow">CONFIGURATION REVIEW</span><button id="close-review" class="icon-button" aria-label="Close review">×</button></div><h2 id="review-title">Review station changes</h2><p id="review-summary" class="subtle"></p><div id="review-changes" class="review-changes"></div><label id="empty-consent" class="empty-consent hidden"><input id="allow-empty" type="checkbox"> I intend to disable every mount on this station.</label><p class="save-explanation">ALIS backs up the current file and verifies the saved result. Mount fit must still be checked in-game.</p><p id="review-error" class="dialog-error hidden" role="alert"></p><div class="dialog-actions"><button id="cancel-review" class="quiet">Keep editing</button><button id="confirm-save" class="primary">Save station</button></div></dialog>
+<dialog id="backup-dialog"><div class="dialog-heading"><span class="eyebrow">STATION HISTORY</span><button id="close-backups" class="icon-button" aria-label="Close backups">×</button></div><h2>Station backups</h2><p class="subtle">Restoring also backs up the current configuration.</p><div id="backup-list" class="backup-list"></div><div class="dialog-actions"><button id="done-backups" class="quiet">Done</button></div></dialog>
+</body>
+</html>
