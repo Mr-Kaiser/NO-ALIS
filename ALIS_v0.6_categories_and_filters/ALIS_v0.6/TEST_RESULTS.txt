@@ -1,0 +1,151 @@
+ALIS v0.6 verification
+2026-10-03T18:56:56.188173+00:00
+
+COMMAND: python -m unittest discover -s tests -v
+test_bootstrap_read_only_and_groups_exposed (test_categories.CategoryTests.test_bootstrap_read_only_and_groups_exposed) ... ok
+test_changed_weapon_identity_ignores_old_tags (test_categories.CategoryTests.test_changed_weapon_identity_ignores_old_tags) ... ok
+test_corrupt_duplicate_or_wrong_version_refused (test_categories.CategoryTests.test_corrupt_duplicate_or_wrong_version_refused) ... ok
+test_empty_custom_groups_remain_custom (test_categories.CategoryTests.test_empty_custom_groups_remain_custom) ... ok
+test_failed_atomic_replace_retains_original_and_backup (test_categories.CategoryTests.test_failed_atomic_replace_retains_original_and_backup) ... ok
+test_invalid_tags_and_missing_items_refused (test_categories.CategoryTests.test_invalid_tags_and_missing_items_refused) ... ok
+test_multiple_overrides_exact_backup_noop_and_revert (test_categories.CategoryTests.test_multiple_overrides_exact_backup_noop_and_revert) ... ok
+test_mutation_guards (test_categories.CategoryTests.test_mutation_guards) ... ok
+test_platform_labels_ignore_modifying_owner (test_categories.CategoryTests.test_platform_labels_ignore_modifying_owner) ... ok
+test_real_world_name_does_not_guess_mod_seeker (test_categories.CategoryTests.test_real_world_name_does_not_guess_mod_seeker) ... ok
+test_revision_and_dictionary_conflicts (test_categories.CategoryTests.test_revision_and_dictionary_conflicts) ... ok
+test_save_restart_and_game_files_unchanged (test_categories.CategoryTests.test_save_restart_and_game_files_unchanged) ... ok
+test_stock_guidance_and_explicit_hints (test_categories.CategoryTests.test_stock_guidance_and_explicit_hints) ... ok
+test_symlink_and_active_lock_refused (test_categories.CategoryTests.test_symlink_and_active_lock_refused) ... ok
+test_vehicle_and_support_false_positives (test_categories.CategoryTests.test_vehicle_and_support_false_positives) ... ok
+test_bad_name_shape_station_and_counts (test_layouts.LayoutTests.test_bad_name_shape_station_and_counts) ... ok
+test_bootstrap_stock_name_and_filtered_defaults (test_layouts.LayoutTests.test_bootstrap_stock_name_and_filtered_defaults) ... ok
+test_changed_station_name_removes_stale_markers (test_layouts.LayoutTests.test_changed_station_name_removes_stale_markers) ... ok
+test_corrupt_or_duplicate_profile_store_refused (test_layouts.LayoutTests.test_corrupt_or_duplicate_profile_store_refused) ... ok
+test_different_platform_save_retains_existing_profile (test_layouts.LayoutTests.test_different_platform_save_retains_existing_profile) ... ok
+test_failed_replace_retains_original_profile_and_backup (test_layouts.LayoutTests.test_failed_replace_retains_original_profile_and_backup) ... ok
+test_invalid_coordinate_inputs_rejected_without_files (test_layouts.LayoutTests.test_invalid_coordinate_inputs_rejected_without_files) ... ok
+test_other_layout_writer_lock_refused (test_layouts.LayoutTests.test_other_layout_writer_lock_refused) ... ok
+test_png_image_saved_and_external_svg_invalid_images_refused (test_layouts.LayoutTests.test_png_image_saved_and_external_svg_invalid_images_refused) ... ok
+test_profile_endpoint_guards_and_unknown_platform (test_layouts.LayoutTests.test_profile_endpoint_guards_and_unknown_platform) ... ok
+test_save_and_restart_preserve_layout_without_game_changes (test_layouts.LayoutTests.test_save_and_restart_preserve_layout_without_game_changes) ... ok
+test_schematic_assets_avoid_inline_styles_under_csp (test_layouts.LayoutTests.test_schematic_assets_avoid_inline_styles_under_csp) ... ok
+test_second_save_has_exact_backup_and_noop_does_not (test_layouts.LayoutTests.test_second_save_has_exact_backup_and_noop_does_not) ... ok
+test_stale_revision_preserves_newer_profile (test_layouts.LayoutTests.test_stale_revision_preserves_newer_profile) ... ok
+test_symlinked_settings_refused (test_layouts.LayoutTests.test_symlinked_settings_refused) ... ok
+test_unknown_platform_falls_back_without_guessing (test_layouts.LayoutTests.test_unknown_platform_falls_back_without_guessing) ... ok
+test_api_save_ticket_and_local_guards (test_presets.PresetTests.test_api_save_ticket_and_local_guards) ... ok
+test_atomic_create_collision_keeps_other_writer_file (test_presets.PresetTests.test_atomic_create_collision_keeps_other_writer_file) ... ok
+test_catalog_conflict_before_preview (test_presets.PresetTests.test_catalog_conflict_before_preview) ... ok
+test_differently_cased_target_appearing_after_review_refused (test_presets.PresetTests.test_differently_cased_target_appearing_after_review_refused) ... ok
+test_duplicate_name_does_not_overwrite_without_revision (test_presets.PresetTests.test_duplicate_name_does_not_overwrite_without_revision) ... ok
+test_existing_unavailable_mount_is_readable_but_save_is_blocked (test_presets.PresetTests.test_existing_unavailable_mount_is_readable_but_save_is_blocked) ... ok
+test_expired_ticket_cannot_create_file (test_presets.PresetTests.test_expired_ticket_cannot_create_file) ... ok
+test_failed_replace_keeps_original_and_backup (test_presets.PresetTests.test_failed_replace_keeps_original_and_backup) ... ok
+test_forged_plan_cannot_write_outside_platform (test_presets.PresetTests.test_forged_plan_cannot_write_outside_platform) ... ok
+test_invalid_filename_and_case_collision_refused (test_presets.PresetTests.test_invalid_filename_and_case_collision_refused) ... ok
+test_list_read_and_preview_are_read_only (test_presets.PresetTests.test_list_read_and_preview_are_read_only) ... ok
+test_mismatched_arrays_duplicate_fields_and_nan_refused (test_presets.PresetTests.test_mismatched_arrays_duplicate_fields_and_nan_refused) ... ok
+test_new_blank_does_not_invent_vanilla_flag (test_presets.PresetTests.test_new_blank_does_not_invent_vanilla_flag) ... ok
+test_new_copy_preserves_exact_source_bytes_and_unknown_fields (test_presets.PresetTests.test_new_copy_preserves_exact_source_bytes_and_unknown_fields) ... ok
+test_noop_has_no_backup (test_presets.PresetTests.test_noop_has_no_backup) ... ok
+test_overwrite_keeps_bom_crlf_unknown_fields_and_exact_backup (test_presets.PresetTests.test_overwrite_keeps_bom_crlf_unknown_fields_and_exact_backup) ... ok
+test_precluding_occupied_stations_refused (test_presets.PresetTests.test_precluding_occupied_stations_refused) ... ok
+test_source_conflict_before_preview (test_presets.PresetTests.test_source_conflict_before_preview) ... ok
+test_stale_key_normalizes_to_whitelisted_write_key (test_presets.PresetTests.test_stale_key_normalizes_to_whitelisted_write_key) ... ok
+test_symlink_source_and_target_refused (test_presets.PresetTests.test_symlink_source_and_target_refused) ... ok
+test_target_appearing_after_review_is_not_overwritten (test_presets.PresetTests.test_target_appearing_after_review_is_not_overwritten) ... ok
+test_unavailable_unknown_and_missing_selection_refused (test_presets.PresetTests.test_unavailable_unknown_and_missing_selection_refused) ... ok
+test_whitelist_or_source_change_after_review_refused (test_presets.PresetTests.test_whitelist_or_source_change_after_review_refused) ... ok
+test_bad_names_ids_and_selection_refused (test_themes.ThemeTests.test_bad_names_ids_and_selection_refused) ... ok
+test_builtins_can_be_selected_without_custom (test_themes.ThemeTests.test_builtins_can_be_selected_without_custom) ... ok
+test_conflict_keeps_latest_theme (test_themes.ThemeTests.test_conflict_keeps_latest_theme) ... ok
+test_corrupt_duplicate_or_wrong_version_settings_refused (test_themes.ThemeTests.test_corrupt_duplicate_or_wrong_version_settings_refused) ... ok
+test_css_injection_and_missing_color_refused (test_themes.ThemeTests.test_css_injection_and_missing_color_refused) ... ok
+test_custom_theme_save_and_restart (test_themes.ThemeTests.test_custom_theme_save_and_restart) ... ok
+test_default_inventory_is_read_only (test_themes.ThemeTests.test_default_inventory_is_read_only) ... ok
+test_failed_replace_keeps_settings_and_backup (test_themes.ThemeTests.test_failed_replace_keeps_settings_and_backup) ... ok
+test_local_mutation_guards (test_themes.ThemeTests.test_local_mutation_guards) ... ok
+test_noop_and_exact_backup (test_themes.ThemeTests.test_noop_and_exact_backup) ... ok
+test_removing_custom_theme_preserves_stock_presets (test_themes.ThemeTests.test_removing_custom_theme_preserves_stock_presets) ... ok
+test_symlinked_settings_and_lock_refused (test_themes.ThemeTests.test_symlinked_settings_and_lock_refused) ... ok
+test_too_many_custom_themes_refused (test_themes.ThemeTests.test_too_many_custom_themes_refused) ... ok
+test_bootstrap_and_station (test_web.WebTests.test_bootstrap_and_station) ... ok
+test_conflict_at_commit (test_web.WebTests.test_conflict_at_commit) ... ok
+test_conflict_at_preview (test_web.WebTests.test_conflict_at_preview) ... ok
+test_empty_whitelist_needs_consent (test_web.WebTests.test_empty_whitelist_needs_consent) ... ok
+test_expired_preview (test_web.WebTests.test_expired_preview) ... ok
+test_headers_and_no_debugger (test_web.WebTests.test_headers_and_no_debugger) ... ok
+test_invalid_host_and_remote_address (test_web.WebTests.test_invalid_host_and_remote_address) ... ok
+test_invalid_payloads (test_web.WebTests.test_invalid_payloads) ... ok
+test_noop_creates_no_backup (test_web.WebTests.test_noop_creates_no_backup) ... ok
+test_preview_no_write_and_verified_commit (test_web.WebTests.test_preview_no_write_and_verified_commit) ... ok
+test_restore_uses_revision_and_keeps_exact_original (test_web.WebTests.test_restore_uses_revision_and_keeps_exact_original) ... ok
+test_save_without_preview_refused (test_web.WebTests.test_save_without_preview_refused) ... ok
+test_ticket_is_single_use (test_web.WebTests.test_ticket_is_single_use) ... ok
+test_tokens_and_origin_required (test_web.WebTests.test_tokens_and_origin_required) ... ok
+test_unknown_key_and_missing_station (test_web.WebTests.test_unknown_key_and_missing_station) ... ok
+test_add_remove_preserves_unknown_fields_bom_crlf (test_writer.WriterTests.test_add_remove_preserves_unknown_fields_bom_crlf) ... ok
+test_add_remove_same_mount_refused (test_writer.WriterTests.test_add_remove_same_mount_refused) ... ok
+test_ambiguous_alias_refused (test_writer.WriterTests.test_ambiguous_alias_refused) ... ok
+test_asset_alias_maps_to_json_key (test_writer.WriterTests.test_asset_alias_maps_to_json_key) ... ok
+test_changed_since_preview_refused (test_writer.WriterTests.test_changed_since_preview_refused) ... ok
+test_cli_preview_apply_and_error (test_writer.WriterTests.test_cli_preview_apply_and_error) ... ok
+test_duplicate_station_files_refused (test_writer.WriterTests.test_duplicate_station_files_refused) ... ok
+test_empty_requires_explicit_flag (test_writer.WriterTests.test_empty_requires_explicit_flag) ... ok
+test_expected_revision_refused (test_writer.WriterTests.test_expected_revision_refused) ... ok
+test_failed_atomic_replace_keeps_original_and_backup (test_writer.WriterTests.test_failed_atomic_replace_keeps_original_and_backup) ... ok
+test_failed_backup_leaves_station_unchanged (test_writer.WriterTests.test_failed_backup_leaves_station_unchanged) ... ok
+test_filename_mismatch_refused (test_writer.WriterTests.test_filename_mismatch_refused) ... ok
+test_invalid_json_shapes_refused (test_writer.WriterTests.test_invalid_json_shapes_refused) ... ok
+test_invalid_plan_cannot_change_other_fields (test_writer.WriterTests.test_invalid_plan_cannot_change_other_fields) ... ok
+test_missing_station_refused (test_writer.WriterTests.test_missing_station_refused) ... ok
+test_noop_no_backup (test_writer.WriterTests.test_noop_no_backup) ... ok
+test_other_alis_writer_lock_refused (test_writer.WriterTests.test_other_alis_writer_lock_refused) ... ok
+test_other_station_backup_refused (test_writer.WriterTests.test_other_station_backup_refused) ... ok
+test_path_traversal_platform_refused (test_writer.WriterTests.test_path_traversal_platform_refused) ... ok
+test_post_save_verification_failure_keeps_backup (test_writer.WriterTests.test_post_save_verification_failure_keeps_backup) ... ok
+test_preview_writes_nothing (test_writer.WriterTests.test_preview_writes_nothing) ... ok
+test_repeated_add_is_idempotent (test_writer.WriterTests.test_repeated_add_is_idempotent) ... ok
+test_restore_is_byte_exact_and_backs_up_current (test_writer.WriterTests.test_restore_is_byte_exact_and_backs_up_current) ... ok
+test_stale_existing_key_replaced_when_added (test_writer.WriterTests.test_stale_existing_key_replaced_when_added) ... ok
+test_stale_key_normalized_only_when_requested (test_writer.WriterTests.test_stale_key_normalized_only_when_requested) ... ok
+test_stale_normalization_preserves_unrelated_duplicate_entries (test_writer.WriterTests.test_stale_normalization_preserves_unrelated_duplicate_entries) ... ok
+test_station_symlink_refused (test_writer.WriterTests.test_station_symlink_refused) ... ok
+test_unknown_add_refused (test_writer.WriterTests.test_unknown_add_refused) ... ok
+test_unknown_existing_keys_retained_or_explicitly_removed (test_writer.WriterTests.test_unknown_existing_keys_retained_or_explicitly_removed) ... ok
+test_unknown_remove_refused (test_writer.WriterTests.test_unknown_remove_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 112 tests in 0.805s
+
+OK
+
+
+COMMAND: node tests/verify_ui.cjs PATH_TO_PRESET_LOADOUT
+PASS: UI state/events over real Flask HTTP: friendly/internal name search; paired SVG selection; whitelist draft/review/save/exact restore/conflict/empty consent; numeric marker edit/add/remove; profile save/reload/conflict; independent weapon draft; unmapped mod platform naming/layout; unchanged game files during layout saves.
+PASS: themes live preview/custom colors/save/cancel/reload; native loadout preset copy/review/create/overwrite/exact backup; preclusion rejection; catalog conflict after review; whitelist draft preserved; original game files unchanged.
+PASS: combined owner/role/type/guidance/search filters; platform type/role filters; unclassified view; clear filters; hidden whitelist drafts; row tag editing; category save/exact backup/revert/reload/conflict; platform labels; unchanged game files.
+Rendered layout, image decoding, pointer geometry and native dialogs were not tested; dialogs were stubbed for DOM tests.
+
+
+COMMAND: python -m tests.verify_categories PATH_TO_PRESET_LOADOUT
+PASS: valid automatic category groups for all 986 weapons and 32 platforms.
+PASS: custom labels on 7 representative mounts and all 32 platforms; restart persistence; exact backups; automatic-label restore.
+PASS: all original dictionaries, station JSON and native presets unchanged; temporary-copy checks only.
+
+
+COMMAND: python -m tests.verify_reference_api PATH_TO_PRESET_LOADOUT
+PASS: API preview/save/exact restore on 192 stations; 13 complete stock schematic profiles.
+PASS: profile save and restart persistence for 32 platforms.
+PASS: all game file hashes and 147 presets preserved; input folder unchanged; zero validation issues.
+
+
+COMMAND: python -m tests.verify_presets PATH_TO_PRESET_LOADOUT
+PASS: read/copy/review/create/update/exact backup for 147 native presets; 142 valid originals were byte-exact no-ops.
+PASS: 6 unavailable selections flagged across 5 existing presets; originals untouched.
+PASS: all four theme presets and restart persistence; all original hashes unchanged; zero validation issues.
+
+
+JavaScript syntax checks passed for app.js, categories.js, extras.js and the DOM verifier.
+
+Limitations: rendered browser layout, native dialogs, pointer geometry and custom-image rendering were not inspected. Local browser preview was blocked; dialogs were stubbed for DOM tests. Windows filesystem behavior and in-game loading require local verification. Category defaults are editable stock model labels and name/key hints; the dictionaries contain no category fields. Mapping sources and limits are in CATEGORY_NOTES.md. All reference checks used temporary copies and retained original game-file hashes.
