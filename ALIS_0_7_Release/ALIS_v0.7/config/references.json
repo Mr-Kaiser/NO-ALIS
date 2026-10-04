@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "platforms": {
+    "CAS1": [
+      {
+        "id": "top",
+        "file": "Brawler_top.webp",
+        "name": "Top",
+        "default": true
+      },
+      {
+        "id": "front",
+        "file": "Brawler_Front.png",
+        "name": "Front",
+        "default": false
+      }
+    ],
+    "COIN": [
+      {
+        "id": "top",
+        "file": "Cricket_top.png",
+        "name": "Top",
+        "default": true
+      }
+    ],
+    "trainer": [
+      {
+        "id": "top",
+        "file": "TA30-Top.png",
+        "name": "Top",
+        "default": true
+      },
+      {
+        "id": "front",
+        "file": "Compass_top.png",
+        "name": "Front",
+        "default": false
+      }
+    ],
+    "VTOLTrainer1": [
+      {
+        "id": "top",
+        "file": "Vagrant_top.webp",
+        "name": "Top",
+        "default": true
+      }
+    ],
+    "Fighter1": [
+      {
+        "id": "top",
+        "file": "FS12-Top.webp",
+        "name": "Top",
+        "default": true
+      }
+    ],
+    "SmallFighter1": [
+      {
+        "id": "top",
+        "file": "Vortex_top.png",
+        "name": "Top",
+        "default": true
+      },
+      {
+        "id": "front",
+        "file": "Vortex_front.png",
+        "name": "Front",
+        "default": false
+      }
+    ],
+    "Multirole1": [
+      {
+        "id": "top",
+        "file": "KR-67_Top.png",
+        "name": "Top",
+        "default": true
+      },
+      {
+        "id": "front",
+        "file": "KR-67_Front.png",
+        "name": "Front",
+        "default": false
+      }
+    ],
+    "EW1": [
+      {
+        "id": "top",
+        "file": "Medusa.webp",
+        "name": "Top",
+        "default": true,
+        "crop": [
+          0.1,
+          0.2,
+          0.8,
+          0.8
+        ]
+      },
+      {
+        "id": "plate",
+        "file": "Medusa.webp",
+        "name": "Combined views",
+        "default": false
+      }
+    ],
+    "Darkreach": [
+      {
+        "id": "top",
+        "file": "SFB81-Top.png",
+        "name": "Top",
+        "default": true
+      },
+      {
+        "id": "front",
+        "file": "SFB81-Front.png",
+        "name": "Front",
+        "default": false
+      }
+    ],
+    "FastBomber1": [
+      {
+        "id": "top",
+        "file": "Alkyon_top.webp",
+        "name": "Top (wing sweep reference)",
+        "default": true
+      }
+    ],
+    "AttackHelo1": [
+      {
+        "id": "top",
+        "file": "SAH46-Top.png",
+        "name": "Top",
+        "default": true
+      },
+      {
+        "id": "front",
+        "file": "SAH46-Front.webp",
+        "name": "Front",
+        "default": false
+      }
+    ],
+    "UtilityHelo1": [
+      {
+        "id": "top",
+        "file": "Uh-90_ibis_top.webp",
+        "name": "Top",
+        "default": true
+      }
+    ],
+    "QuadVTOL1": [
+      {
+        "id": "top",
+        "file": "VL-49_Top.webp",
+        "name": "Top",
+        "default": true
+      }
+    ]
+  }
+}

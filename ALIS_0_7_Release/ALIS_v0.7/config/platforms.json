@@ -1,0 +1,936 @@
+{
+  "version": 1,
+  "platforms": {
+    "CAS1": {
+      "display_name": "A-19 Brawler",
+      "silhouette": "brawler",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Internal 35mm Autocannons",
+          "points": [
+            [
+              0.47,
+              0.24
+            ],
+            [
+              0.53,
+              0.24
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Center Pylon",
+          "points": [
+            [
+              0.5,
+              0.62
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Inner Fuselage Pylons",
+          "points": [
+            [
+              0.44,
+              0.47
+            ],
+            [
+              0.56,
+              0.47
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Outer Fuselage Pylons",
+          "points": [
+            [
+              0.4,
+              0.55
+            ],
+            [
+              0.6,
+              0.55
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Inner Wing Pylons",
+          "points": [
+            [
+              0.31,
+              0.5
+            ],
+            [
+              0.69,
+              0.5
+            ]
+          ]
+        },
+        "5": {
+          "expected_name": "Middle Wing Pylons",
+          "points": [
+            [
+              0.23,
+              0.5
+            ],
+            [
+              0.77,
+              0.5
+            ]
+          ]
+        },
+        "6": {
+          "expected_name": "Outer Left Wing Pylon",
+          "points": [
+            [
+              0.13,
+              0.5
+            ]
+          ]
+        },
+        "7": {
+          "expected_name": "Outer Right Wing Pylon",
+          "points": [
+            [
+              0.87,
+              0.5
+            ]
+          ]
+        },
+        "8": {
+          "expected_name": "Tail Mount",
+          "points": [
+            [
+              0.5,
+              0.87
+            ]
+          ]
+        }
+      }
+    },
+    "COIN": {
+      "display_name": "CI-22 Cricket",
+      "silhouette": "twinboom",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Internal guns",
+          "points": [
+            [
+              0.5,
+              0.23
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Ventral Hardpoint",
+          "points": [
+            [
+              0.5,
+              0.6
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Fuselage Pylons",
+          "points": [
+            [
+              0.45,
+              0.49
+            ],
+            [
+              0.55,
+              0.49
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Inner Wing Pylons",
+          "points": [
+            [
+              0.34,
+              0.48
+            ],
+            [
+              0.66,
+              0.48
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Outer Left Wing Pylon",
+          "points": [
+            [
+              0.23,
+              0.47
+            ]
+          ]
+        },
+        "5": {
+          "expected_name": "Outer Right Wing Pylon",
+          "points": [
+            [
+              0.77,
+              0.47
+            ]
+          ]
+        }
+      }
+    },
+    "trainer": {
+      "display_name": "T/A-30 Compass",
+      "silhouette": "jet",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Weapon Bay",
+          "points": [
+            [
+              0.5,
+              0.52
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Inner Wing Pylons",
+          "points": [
+            [
+              0.39,
+              0.56
+            ],
+            [
+              0.61,
+              0.56
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Middle Wing Pylons",
+          "points": [
+            [
+              0.3,
+              0.6
+            ],
+            [
+              0.7,
+              0.6
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Outer Wing Pylons",
+          "points": [
+            [
+              0.21,
+              0.64
+            ],
+            [
+              0.79,
+              0.64
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Tail Hook",
+          "points": [
+            [
+              0.5,
+              0.88
+            ]
+          ]
+        }
+      }
+    },
+    "VTOLTrainer1": {
+      "display_name": "VT-7 Vagrant",
+      "silhouette": "jet",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Center Pylon",
+          "points": [
+            [
+              0.5,
+              0.68
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Left Fuselage Pylon",
+          "points": [
+            [
+              0.45,
+              0.51
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Right Fuselage Pylon",
+          "points": [
+            [
+              0.55,
+              0.51
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Inner wing pylons",
+          "points": [
+            [
+              0.39,
+              0.6
+            ],
+            [
+              0.61,
+              0.6
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Outer wing pylons",
+          "points": [
+            [
+              0.31,
+              0.62
+            ],
+            [
+              0.69,
+              0.62
+            ]
+          ]
+        },
+        "5": {
+          "expected_name": "Wingtip Pylons",
+          "points": [
+            [
+              0.23,
+              0.65
+            ],
+            [
+              0.77,
+              0.65
+            ]
+          ]
+        }
+      }
+    },
+    "Fighter1": {
+      "display_name": "FS-12 Revoker",
+      "silhouette": "canard",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Internal Cannon",
+          "points": [
+            [
+              0.5,
+              0.27
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Internal Weapon Bays",
+          "points": [
+            [
+              0.465,
+              0.51
+            ],
+            [
+              0.535,
+              0.51
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Wing Pylons",
+          "points": [
+            [
+              0.36,
+              0.7
+            ],
+            [
+              0.64,
+              0.7
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Wingtip Pylons",
+          "points": [
+            [
+              0.23,
+              0.7
+            ],
+            [
+              0.77,
+              0.7
+            ]
+          ]
+        }
+      }
+    },
+    "SmallFighter1": {
+      "display_name": "FS-20 Vortex",
+      "silhouette": "delta",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Internal Cannon",
+          "points": [
+            [
+              0.55,
+              0.29
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Weapon Bays (inner)",
+          "points": [
+            [
+              0.46,
+              0.49
+            ],
+            [
+              0.54,
+              0.49
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Weapon Bays (outer)",
+          "points": [
+            [
+              0.41,
+              0.53
+            ],
+            [
+              0.59,
+              0.53
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Inner wing pylons",
+          "points": [
+            [
+              0.35,
+              0.68
+            ],
+            [
+              0.65,
+              0.68
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Outer wing pylons",
+          "points": [
+            [
+              0.25,
+              0.76
+            ],
+            [
+              0.75,
+              0.76
+            ]
+          ]
+        }
+      }
+    },
+    "Multirole1": {
+      "display_name": "KR-67 Ifrit",
+      "silhouette": "delta",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Internal Cannon",
+          "points": [
+            [
+              0.52,
+              0.32
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Forward Weapon Bay",
+          "points": [
+            [
+              0.465,
+              0.46
+            ],
+            [
+              0.535,
+              0.46
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Rear Weapon Bay",
+          "points": [
+            [
+              0.465,
+              0.59
+            ],
+            [
+              0.535,
+              0.59
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Side Weapon Bays",
+          "points": [
+            [
+              0.42,
+              0.53
+            ],
+            [
+              0.58,
+              0.53
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Inner Wing Pylons",
+          "points": [
+            [
+              0.35,
+              0.66
+            ],
+            [
+              0.65,
+              0.66
+            ]
+          ]
+        },
+        "5": {
+          "expected_name": "Outer Wing Pylons",
+          "points": [
+            [
+              0.25,
+              0.73
+            ],
+            [
+              0.75,
+              0.73
+            ]
+          ]
+        },
+        "6": {
+          "expected_name": "Tail Hook",
+          "points": [
+            [
+              0.5,
+              0.9
+            ]
+          ]
+        }
+      }
+    },
+    "EW1": {
+      "display_name": "EW-25 Medusa",
+      "silhouette": "jet",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Internal Laser Mount",
+          "points": [
+            [
+              0.5,
+              0.19
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Weapon Bay",
+          "points": [
+            [
+              0.5,
+              0.55
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Dorsal Mount",
+          "points": [
+            [
+              0.5,
+              0.39
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Inner Wing Pylons",
+          "points": [
+            [
+              0.35,
+              0.57
+            ],
+            [
+              0.65,
+              0.57
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Outer Wing Pylons",
+          "points": [
+            [
+              0.24,
+              0.64
+            ],
+            [
+              0.76,
+              0.64
+            ]
+          ]
+        }
+      }
+    },
+    "Darkreach": {
+      "display_name": "SFB-81 Darkreach",
+      "silhouette": "bomber",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Inner Weapon Bays (Combined)",
+          "points": [
+            [
+              0.46,
+              0.55
+            ],
+            [
+              0.54,
+              0.55
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Inner Weapon Bays (Rear)",
+          "points": [
+            [
+              0.46,
+              0.65
+            ],
+            [
+              0.54,
+              0.65
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Inner Weapon Bays (Front)",
+          "points": [
+            [
+              0.46,
+              0.44
+            ],
+            [
+              0.54,
+              0.44
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Outer weapon bays",
+          "points": [
+            [
+              0.35,
+              0.6
+            ],
+            [
+              0.65,
+              0.6
+            ]
+          ]
+        }
+      }
+    },
+    "FastBomber1": {
+      "display_name": "Alkyon AB-4",
+      "silhouette": "swingwing",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Forward Weapon Bay",
+          "points": [
+            [
+              0.465,
+              0.42
+            ],
+            [
+              0.535,
+              0.42
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Rear Weapon Bay",
+          "points": [
+            [
+              0.465,
+              0.62
+            ],
+            [
+              0.535,
+              0.62
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Combined Weapon Bays",
+          "points": [
+            [
+              0.5,
+              0.54
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Wing Pylons",
+          "points": [
+            [
+              0.28,
+              0.61
+            ],
+            [
+              0.72,
+              0.61
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Heater Bays",
+          "points": [
+            [
+              0.44,
+              0.34
+            ],
+            [
+              0.56,
+              0.34
+            ]
+          ]
+        }
+      }
+    },
+    "AttackHelo1": {
+      "display_name": "SAH-46 Chicane",
+      "silhouette": "helicopter",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Chin Turret",
+          "points": [
+            [
+              0.5,
+              0.15
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Internal Bays",
+          "points": [
+            [
+              0.465,
+              0.27
+            ],
+            [
+              0.535,
+              0.27
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Stub Pylons",
+          "points": [
+            [
+              0.44,
+              0.34
+            ],
+            [
+              0.56,
+              0.34
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Left Stub Tip Pylon",
+          "points": [
+            [
+              0.39,
+              0.39
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Right Stub Tip Pylon",
+          "points": [
+            [
+              0.61,
+              0.39
+            ]
+          ]
+        }
+      }
+    },
+    "UtilityHelo1": {
+      "display_name": "UH-90 Ibis",
+      "silhouette": "helicopter",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Left Fuselage Pylon",
+          "points": [
+            [
+              0.43,
+              0.52
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Right Fuselage Pylon",
+          "points": [
+            [
+              0.57,
+              0.52
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Door guns",
+          "points": [
+            [
+              0.45,
+              0.4
+            ],
+            [
+              0.55,
+              0.4
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Cargo Bay",
+          "points": [
+            [
+              0.5,
+              0.57
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Cargo Bay (Front)",
+          "points": [
+            [
+              0.5,
+              0.48
+            ]
+          ]
+        },
+        "5": {
+          "expected_name": "Cargo Bay (Rear)",
+          "points": [
+            [
+              0.5,
+              0.65
+            ]
+          ]
+        },
+        "6": {
+          "expected_name": "Slingload Hook",
+          "points": [
+            [
+              0.5,
+              0.75
+            ]
+          ]
+        }
+      }
+    },
+    "QuadVTOL1": {
+      "display_name": "VL-49 Tarantula",
+      "silhouette": "quadvtol",
+      "verified": false,
+      "image": null,
+      "stations": {
+        "0": {
+          "expected_name": "Cargo Bay",
+          "points": [
+            [
+              0.5,
+              0.54
+            ]
+          ]
+        },
+        "1": {
+          "expected_name": "Cargo Bay (Front)",
+          "points": [
+            [
+              0.5,
+              0.43
+            ]
+          ]
+        },
+        "2": {
+          "expected_name": "Cargo Bay(Rear)",
+          "points": [
+            [
+              0.5,
+              0.65
+            ]
+          ]
+        },
+        "3": {
+          "expected_name": "Floor Turret Mount",
+          "points": [
+            [
+              0.5,
+              0.74
+            ]
+          ]
+        },
+        "4": {
+          "expected_name": "Left Sponson Pylon",
+          "points": [
+            [
+              0.41,
+              0.67
+            ]
+          ]
+        },
+        "5": {
+          "expected_name": "Right Sponson Pylon",
+          "points": [
+            [
+              0.59,
+              0.67
+            ]
+          ]
+        },
+        "6": {
+          "expected_name": "Slingload Hook",
+          "points": [
+            [
+              0.5,
+              0.86
+            ]
+          ]
+        }
+      }
+    }
+  }
+}
