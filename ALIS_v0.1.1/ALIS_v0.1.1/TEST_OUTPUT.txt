@@ -1,0 +1,24 @@
+ALIS // AUTONOMIC LOADOUT INTEGRATION SYSTEM
+READ-ONLY PARSER / VALIDATOR
+================================================================
+Schema          : 2.0.0-k2
+Platforms       : 32
+Station metadata: 192
+Station JSONs   : 192
+Presets         : 147
+Weapon mounts   : 986
+STALE-KEY rows  : 1
+CHECK rows      : 18
+Validation      : 0 issue(s)
+
+CAS1  (9 stations)
+  [00] Internal 35mm Autocannons | symmetry=- | hardpoints=1 | precluding=- | allowed=2
+  [01] Center Pylon | symmetry=- | hardpoints=1 | precluding=2 | allowed=2
+  [02] Inner Fuselage Pylons | symmetry=- | hardpoints=2 | precluding=1 | allowed=32
+  [03] Outer Fuselage Pylons | symmetry=- | hardpoints=2 | precluding=- | allowed=36
+  [04] Inner Wing Pylons | symmetry=- | hardpoints=2 | precluding=- | allowed=50
+  [05] Middle Wing Pylons | symmetry=- | hardpoints=2 | precluding=- | allowed=43
+  [06] Outer Left Wing Pylon | symmetry=Outer Wing Pylons | hardpoints=1 | precluding=- | allowed=30
+  [07] Outer Right Wing Pylon | symmetry=Outer Wing Pylons | hardpoints=1 | precluding=- | allowed=30
+  [08] Tail Mount | symmetry=- | hardpoints=1 | precluding=- | allowed=1
+

@@ -1,0 +1,82 @@
+ALIS v0.4 verification — 2026-10-03 UTC
+
+COMMAND: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m unittest discover -s tests -v
+test_bad_name_shape_station_and_counts (test_layouts.LayoutTests.test_bad_name_shape_station_and_counts) ... ok
+test_bootstrap_stock_name_and_filtered_defaults (test_layouts.LayoutTests.test_bootstrap_stock_name_and_filtered_defaults) ... ok
+test_changed_station_name_removes_stale_markers (test_layouts.LayoutTests.test_changed_station_name_removes_stale_markers) ... ok
+test_corrupt_or_duplicate_profile_store_refused (test_layouts.LayoutTests.test_corrupt_or_duplicate_profile_store_refused) ... ok
+test_different_platform_save_retains_existing_profile (test_layouts.LayoutTests.test_different_platform_save_retains_existing_profile) ... ok
+test_failed_replace_retains_original_profile_and_backup (test_layouts.LayoutTests.test_failed_replace_retains_original_profile_and_backup) ... ok
+test_invalid_coordinate_inputs_rejected_without_files (test_layouts.LayoutTests.test_invalid_coordinate_inputs_rejected_without_files) ... ok
+test_other_layout_writer_lock_refused (test_layouts.LayoutTests.test_other_layout_writer_lock_refused) ... ok
+test_png_image_saved_and_external_svg_invalid_images_refused (test_layouts.LayoutTests.test_png_image_saved_and_external_svg_invalid_images_refused) ... ok
+test_profile_endpoint_guards_and_unknown_platform (test_layouts.LayoutTests.test_profile_endpoint_guards_and_unknown_platform) ... ok
+test_save_and_restart_preserve_layout_without_game_changes (test_layouts.LayoutTests.test_save_and_restart_preserve_layout_without_game_changes) ... ok
+test_schematic_assets_avoid_inline_styles_under_csp (test_layouts.LayoutTests.test_schematic_assets_avoid_inline_styles_under_csp) ... ok
+test_second_save_has_exact_backup_and_noop_does_not (test_layouts.LayoutTests.test_second_save_has_exact_backup_and_noop_does_not) ... ok
+test_stale_revision_preserves_newer_profile (test_layouts.LayoutTests.test_stale_revision_preserves_newer_profile) ... ok
+test_symlinked_settings_refused (test_layouts.LayoutTests.test_symlinked_settings_refused) ... ok
+test_unknown_platform_falls_back_without_guessing (test_layouts.LayoutTests.test_unknown_platform_falls_back_without_guessing) ... ok
+test_bootstrap_and_station (test_web.WebTests.test_bootstrap_and_station) ... ok
+test_conflict_at_commit (test_web.WebTests.test_conflict_at_commit) ... ok
+test_conflict_at_preview (test_web.WebTests.test_conflict_at_preview) ... ok
+test_empty_whitelist_needs_consent (test_web.WebTests.test_empty_whitelist_needs_consent) ... ok
+test_expired_preview (test_web.WebTests.test_expired_preview) ... ok
+test_headers_and_no_debugger (test_web.WebTests.test_headers_and_no_debugger) ... ok
+test_invalid_host_and_remote_address (test_web.WebTests.test_invalid_host_and_remote_address) ... ok
+test_invalid_payloads (test_web.WebTests.test_invalid_payloads) ... ok
+test_noop_creates_no_backup (test_web.WebTests.test_noop_creates_no_backup) ... ok
+test_preview_no_write_and_verified_commit (test_web.WebTests.test_preview_no_write_and_verified_commit) ... ok
+test_restore_uses_revision_and_keeps_exact_original (test_web.WebTests.test_restore_uses_revision_and_keeps_exact_original) ... ok
+test_save_without_preview_refused (test_web.WebTests.test_save_without_preview_refused) ... ok
+test_ticket_is_single_use (test_web.WebTests.test_ticket_is_single_use) ... ok
+test_tokens_and_origin_required (test_web.WebTests.test_tokens_and_origin_required) ... ok
+test_unknown_key_and_missing_station (test_web.WebTests.test_unknown_key_and_missing_station) ... ok
+test_add_remove_preserves_unknown_fields_bom_crlf (test_writer.WriterTests.test_add_remove_preserves_unknown_fields_bom_crlf) ... ok
+test_add_remove_same_mount_refused (test_writer.WriterTests.test_add_remove_same_mount_refused) ... ok
+test_ambiguous_alias_refused (test_writer.WriterTests.test_ambiguous_alias_refused) ... ok
+test_asset_alias_maps_to_json_key (test_writer.WriterTests.test_asset_alias_maps_to_json_key) ... ok
+test_changed_since_preview_refused (test_writer.WriterTests.test_changed_since_preview_refused) ... ok
+test_cli_preview_apply_and_error (test_writer.WriterTests.test_cli_preview_apply_and_error) ... ok
+test_duplicate_station_files_refused (test_writer.WriterTests.test_duplicate_station_files_refused) ... ok
+test_empty_requires_explicit_flag (test_writer.WriterTests.test_empty_requires_explicit_flag) ... ok
+test_expected_revision_refused (test_writer.WriterTests.test_expected_revision_refused) ... ok
+test_failed_atomic_replace_keeps_original_and_backup (test_writer.WriterTests.test_failed_atomic_replace_keeps_original_and_backup) ... ok
+test_failed_backup_leaves_station_unchanged (test_writer.WriterTests.test_failed_backup_leaves_station_unchanged) ... ok
+test_filename_mismatch_refused (test_writer.WriterTests.test_filename_mismatch_refused) ... ok
+test_invalid_json_shapes_refused (test_writer.WriterTests.test_invalid_json_shapes_refused) ... ok
+test_invalid_plan_cannot_change_other_fields (test_writer.WriterTests.test_invalid_plan_cannot_change_other_fields) ... ok
+test_missing_station_refused (test_writer.WriterTests.test_missing_station_refused) ... ok
+test_noop_no_backup (test_writer.WriterTests.test_noop_no_backup) ... ok
+test_other_alis_writer_lock_refused (test_writer.WriterTests.test_other_alis_writer_lock_refused) ... ok
+test_other_station_backup_refused (test_writer.WriterTests.test_other_station_backup_refused) ... ok
+test_path_traversal_platform_refused (test_writer.WriterTests.test_path_traversal_platform_refused) ... ok
+test_post_save_verification_failure_keeps_backup (test_writer.WriterTests.test_post_save_verification_failure_keeps_backup) ... ok
+test_preview_writes_nothing (test_writer.WriterTests.test_preview_writes_nothing) ... ok
+test_repeated_add_is_idempotent (test_writer.WriterTests.test_repeated_add_is_idempotent) ... ok
+test_restore_is_byte_exact_and_backs_up_current (test_writer.WriterTests.test_restore_is_byte_exact_and_backs_up_current) ... ok
+test_stale_existing_key_replaced_when_added (test_writer.WriterTests.test_stale_existing_key_replaced_when_added) ... ok
+test_stale_key_normalized_only_when_requested (test_writer.WriterTests.test_stale_key_normalized_only_when_requested) ... ok
+test_stale_normalization_preserves_unrelated_duplicate_entries (test_writer.WriterTests.test_stale_normalization_preserves_unrelated_duplicate_entries) ... ok
+test_station_symlink_refused (test_writer.WriterTests.test_station_symlink_refused) ... ok
+test_unknown_add_refused (test_writer.WriterTests.test_unknown_add_refused) ... ok
+test_unknown_existing_keys_retained_or_explicitly_removed (test_writer.WriterTests.test_unknown_existing_keys_retained_or_explicitly_removed) ... ok
+test_unknown_remove_refused (test_writer.WriterTests.test_unknown_remove_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 61 tests in 0.262s
+
+OK
+
+COMMAND: node tests/verify_ui.cjs /workspace/scratch/12e771124a66/test-data/preset-loadout
+PASS: UI state/events over real Flask HTTP: friendly/internal name search; paired SVG selection; whitelist draft/review/save/exact restore/conflict/empty consent; numeric marker edit/add/remove; profile save/reload/conflict; independent weapon draft; unmapped mod platform naming/layout; unchanged game files during layout saves.
+Rendered layout, image decoding, pointer geometry and native dialogs were not tested; dialogs were stubbed for DOM tests.
+
+Additional full-reference checks performed on temporary copies:
+PASS: Writer add, idempotent repeat, remove and exact restore on all 192 stations.
+PASS: API preview/save/exact restore on 192 stations; 13 complete stock schematic profiles.
+PASS: Profile save/restart persistence for all 32 platforms.
+PASS: All original game-file hashes and 147 presets retained; original input unchanged.
+PASS: 986 mounts; zero validation issues.
+
+Browser rendering, pointer geometry, image decoding, Windows behavior and in-game effects need local verification. Native dialogs were stubbed only for DOM tests.
